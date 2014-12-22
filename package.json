@@ -1,0 +1,23 @@
+{
+  "name": "Node-ChatApplication",
+  "version": "1.0.0",
+  "description": "Node-ChatApplication\r ====================",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajesha660/Node-ChatApplication.git"
+  },
+  "author": "Rajesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rajesha660/Node-ChatApplication/issues"
+  },
+  "homepage": "https://github.com/rajesha660/Node-ChatApplication",
+  "dependencies": {
+    "express": "^4.10.6",
+    "socket.io": "^1.2.1"
+  }
+}
