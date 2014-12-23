@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link href="/css/index.css" rel="stylesheet"/>
 	</head>
 	<body>
-		<div id="container">
+		<header>
+			<h1>Node js Chat Application</h1>
+		</header>
+		<section>
+			<div id="container">
 			<ul id="messages"></ul>
-			<form action="">
-				<input id="chattext" autocomplete="off" />
+			<form action="/chat" method="POST">
+				<input id="username"  name="username" autocomplete="off" placeholder="Enter a nickname for chat" />
 				<button>Send</button>
 			</form>
 		</div>
-		<script src="socket.io-1.2.0.js"></script>
-		<script>
-			var socket = io();
-		</script>
+		</section>
+		<footer>
+			<h4>Talent improving exercise, OFS</h4>
+		</footer>
 	</body>
 </html>
