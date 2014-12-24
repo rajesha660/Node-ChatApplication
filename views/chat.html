@@ -44,7 +44,9 @@
         sout += ':</span><span class="user_message">';
         sout += data.message;
         sout += '</span></div>';
-        $('#messagesList').append(sout);
+        var $messagesList = $('#messagesList');
+        $messagesList.append(sout);
+        $messagesList[0].scrollTop = $messagesList[0].scrollHeight;
       });
 
       socket.on('old messages', function(messages) {
@@ -56,7 +58,9 @@
           sout += data.message;
           sout += '</span></div>';
         });
-        $('#messagesList').append(sout);
+	      var $messagesList = $('#messagesList');
+        $messagesList.append(sout);
+	      $messagesList[0].scrollTop = $messagesList[0].scrollHeight;
       });
 
       socket.on('users online', function(users) {
