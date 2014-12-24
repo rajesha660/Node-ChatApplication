@@ -8,13 +8,17 @@
     <header>
       <h1>Node js Chat Application</h1>
       <h3>Welcome {{username}}</h3>
-      <input type="hidden" value={{username}} id="username"/>
     </header>
     <section>
-      <form action="">
-        <input id="userMessage" autocomplete="off" placeholder="Enter your message here"/><button>Send</button>
-      </form>
-      <div id="messagesList"></div>
+      <div id="message_container">
+        <div id="messagesList"></div>
+        <form action="">
+          <input id="userMessage" autocomplete="off" placeholder="Enter your message here"/><button>Send</button>
+        </form>
+      </div>
+      <div id="user_container">
+
+      </div>
     </section>
     <footer>
       <h4>Talent improving exercise, OFS</h4>
@@ -23,14 +27,15 @@
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       var socket = io();
+      socket.emit('connection');
       $('form').submit(function(){
-		var data = {};
-		data.message = $('#userMessage').val();
-		data.username = $('#username').val();
-        socket.emit('chat message', data);
-        $('#userMessage').val('');
-        return false;
+      		var data = {};
+      		data.message = $('#userMessage').val();
+          socket.emit('chat message', data);
+          $('#userMessage').val('');
+            return false;
       });
+
       socket.on('chat message', function(data){
 
         var sout = '';
@@ -39,9 +44,31 @@
         sout += ':</span><span class="user_message">';
         sout += data.message;
         sout += '</span></div>';
-
         $('#messagesList').append(sout);
       });
+
+      socket.on('old messages', function(messages) {
+        var sout = '';
+        messages.forEach(function(data) {
+          sout += '<div class="message"><span class="user_name">';
+          sout += data.username;
+          sout += ':</span><span class="user_message">';
+          sout += data.message;
+          sout += '</span></div>';
+        });
+        $('#messagesList').append(sout);
+      });
+
+      socket.on('users online', function(users) {
+        var sout = '';
+        users.forEach(function(name) {
+          sout += '<div><span>';
+          sout += name;
+          sout += '</span></div>';
+        });
+        $('#user_container').html(sout);
+      });
+
     </script>
   </body>
 </html>

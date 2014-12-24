@@ -18,6 +18,7 @@ section {
   height: 80%;
   position: fixed;
   width: 100%;
+  background: lightgray;
 }
 
 footer {
@@ -62,4 +63,40 @@ button {
 
 .user_name {
   margin-right: 20px;
+}
+
+form {
+  position: fixed;
+  width: 100%;
+  bottom: 65px;
+}
+
+#messagesList {
+  height: 86%;
+  overflow-y: auto;
+}
+
+#message_container {
+  float: left;
+  width: 75%;
+  height: 86%;
+  border: 1px solid black;
+}
+
+#user_container {
+  float: left;
+  width: 25%;
+  height: 86%;
+  border: 1px solid black;
+  overflow-y: auto;
+}
+
+#user_container div {
+  margin: 5px;
+  background: aliceblue;
+  padding: 5px 0 5px 0;
+}
+
+#user_container div span{
+  padding-left: 10px;
 }

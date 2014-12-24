@@ -657,6 +657,30 @@
         }
       }
     },
+    "socket.io-cookie-parser": {
+      "version": "1.0.0",
+      "from": "socket.io-cookie-parser@",
+      "resolved": "https://registry.npmjs.org/socket.io-cookie-parser/-/socket.io-cookie-parser-1.0.0.tgz",
+      "dependencies": {
+        "cookie-parser": {
+          "version": "1.3.3",
+          "from": "cookie-parser@^1.3.2",
+          "resolved": "https://registry.npmjs.org/cookie-parser/-/cookie-parser-1.3.3.tgz",
+          "dependencies": {
+            "cookie": {
+              "version": "0.1.2",
+              "from": "cookie@0.1.2",
+              "resolved": "https://registry.npmjs.org/cookie/-/cookie-0.1.2.tgz"
+            },
+            "cookie-signature": {
+              "version": "1.0.5",
+              "from": "cookie-signature@1.0.5",
+              "resolved": "https://registry.npmjs.org/cookie-signature/-/cookie-signature-1.0.5.tgz"
+            }
+          }
+        }
+      }
+    },
     "swig": {
       "version": "1.4.2",
       "from": "swig@",
