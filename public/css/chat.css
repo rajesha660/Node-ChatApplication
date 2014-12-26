@@ -94,7 +94,7 @@ form {
 #user_container div {
   margin: 5px;
   background: aliceblue;
-  padding: 5px 0 5px 0;
+  padding: 5px 0 5px 5px;
 }
 
 #user_container div span{

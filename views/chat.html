@@ -30,8 +30,19 @@
       socket.emit('connection');
       $('form').submit(function(){
       		var data = {};
-      		data.message = $('#userMessage').val();
-          socket.emit('chat message', data);
+      		var message = $('#userMessage').val();
+          if(message.indexOf('@') > -1) {
+            var wildindex = message.indexOf('@');
+            wildindex++;
+            var colonindex = message.indexOf(':');
+            var toName = message.substring(wildindex, colonindex);
+            data.toName = toName;
+            data.message = message;
+            socket.emit('private chat message', data);
+          } else {
+            data.message = message;
+            socket.emit('chat message', data);
+          }
           $('#userMessage').val('');
             return false;
       });
@@ -66,9 +77,9 @@
       socket.on('users online', function(users) {
         var sout = '';
         users.forEach(function(name) {
-          sout += '<div><span>';
+          sout += '<div>';
           sout += name;
-          sout += '</span></div>';
+          sout += '</div>';
         });
         $('#user_container').html(sout);
       });

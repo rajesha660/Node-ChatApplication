@@ -4,7 +4,7 @@ var express = require('express')
 	, io = require('socket.io')(http)
 	, bodyParser = require('body-parser')
 	, cons = require('consolidate')
-	, cookieParser = require('socket.io-cookie-parser');
+	, SocketCookieParser = require('socket.io-cookie-parser');
 
 var messages = [];
 
@@ -14,7 +14,7 @@ app.set('views', __dirname + '/views')
 
 app.use(bodyParser());
 app.use(express.static(__dirname + '/public'));
-io.use(cookieParser());
+io.use(SocketCookieParser());
 
 app.get('/', function(req, res){
 	res.render('index', {});
@@ -44,13 +44,27 @@ io.on('connection', function(socket){
 
 		var username = this.request.cookies.username;
 		data.username = username;
-		if(messages.length > 20) {
-			messages.unshift();
-		} else {
-			messages.push(data);
-		}
-		io.emit('chat message', data);
+			if(messages.length > 20) {
+				messages.unshift();
+			} else {
+				messages.push(data);
+			}
+			io.emit('chat message', data);
   });
+
+	socket.on('private chat message', function(data) {
+		// var that = this;
+		var username = this.request.cookies.username;
+		data.username = username;
+		var toName = data.toName;
+		var sockets = io.sockets.sockets;
+		sockets.forEach(function(socket) {
+			if(socket.request.cookies.username === toName) {
+				socket.emit('chat message', data);
+			}
+		});
+		this.emit('chat message', data);
+	});
 
 	socket.on('disconnect', function() {
 

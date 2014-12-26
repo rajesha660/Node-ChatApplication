@@ -1,0 +1,47 @@
+body {
+	height: 100%;
+	width: 100%;
+}
+
+body, * {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+header {
+    height: 10%;
+    width: 100%;
+    background-color: #3c4446;
+}
+
+section {
+    height: 80%;
+    position: fixed;
+    /* margin: 10% 0 10% 0; */
+    width: 100%;
+}
+
+footer {
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    bottom: 0;
+    background-color: #3c4446;
+}
+
+h1 {
+	text-align: center;
+	color: #ffffff;
+	padding: 20px 0 20px 0;
+}
+
+h4 {
+	text-align: center;
+	color: #ffffff;
+	margin-top: 20px;
+}
+
+form {
+    position: fixed;
+
+}
